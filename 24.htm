@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Rwd</title>
+    <!--
+    網頁 RWD（Responsive Web Design）中文為「響應式網頁設計」，
+    是一種讓網站版面能自動適應電腦、平板與手機等不同螢幕尺寸的網頁設計技術
+
+    Bootstrap 是一個免費且開源的網頁「前端框架（Front-end Framework）」
+    是一套現成的「網頁積木或樣式百寶箱」，
+    裡面包含了預先寫好的 HTML、CSS 和 JavaScript 程式碼。
+    -->
+    <!-- 1. 本地 Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid bg-primary text-light">container-fluid</div>
+    <!--
+    參考getbootstrap.com/docs/5.3/layout/containers/ 
+    Fluid containers 
+    ----------------------
+    container-fluid 
+    100% 寬度：無論使用者的螢幕或視窗（Viewport）有多寬，
+    .container-fluid 的寬度永遠是 100%，會橫跨整個可視區域。
+    ----------------------
+    bg-primary ,text-light
+    參考 
+    https://getbootstrap.com/docs/5.3/customize/color/
+    https://getbootstrap.com/docs/5.3/utilities/colors/
+    -->
+<div class="container bg-success text-light">container(-sm)</div> 
+    <!--
+    .container 
+    是網頁框架中最基本的版面佈局元素，
+    用於將網頁內容包裹在內、提供左右留白（padding）並讓內容自動置中
+    container 和 container-sm 效果幾乎相同
+    參考
+    https://getbootstrap.com/docs/5.3/layout/containers/
+    bg-success 參考
+    https://getbootstrap.com/docs/5.3/utilities/background/
+    -->
+<div class="container-md bg-danger text-light">container-md</div>
+    <!--
+    .container-md
+    在螢幕寬度達到中斷點 md（768px）之前，
+    寬度保持 100%；超過 md 之後則會固定最大寬度（max-width）。
+    -->
+<div class="container-lg bg-secondary text-light">container-lg</div> 
+    <!--
+    container-lg
+    用於將網頁內容水平置中、限制最大寬度(斷點寬度992px)
+    ，並隨著螢幕尺寸自動調整
+    -->
+
+    <!--以上變化 可用調整瀏覽器大小來觀察變化  -->
+
+<div id="carouselExample" class="carousel slide d-none d-lg-block my-3">
+    <!--
+    carousel(輪播-自動輪播)
+    參考範例
+    https://getbootstrap.com/docs/5.3/components/carousel/
+    slide d-none d-lg-block 參考(注意Screen size)
+    my-3 參考
+    https://getbootstrap.com/docs/5.3/utilities/spacing/
+    m：代表 Margin（外距），控制元素周圍的外部空間。
+    y：代表 Y 軸（垂直方向），同時設定頂部（Top）與底部（Bottom）。
+    3：代表 間距層級，對應到 Bootstrap 的預設間距縮放比例。
+    -->
+  <div class="carousel-inner">
+      <!--
+      這是 carousel-inner 容器
+      -->
+    <div class="carousel-item active">
+        <!--
+        carousel-item active
+        .carousel-item：定義這是一個輪播的單一內容區塊（例如一張圖片或一個滑動項目）。
+        預設狀態下，所有的 carousel-item 都是隱藏（display: none）的。
+        .active：Bootstrap 的通用狀態類別（Utility class），
+        用來指定當前被啟動、顯示的元素。當把 .active 加到某個 
+        .carousel-item 上時，該項目才會變成顯示狀態（display: block 或配合 CSS 動畫呈現）。
+        -->
+      <img src="https://placehold.co/1200x300" class="d-block w-100" alt="...">
+        <!--
+        d-block：代表 display: block;。
+        它會把元素強制轉為區塊元素，讓元素獨佔一整行，
+        並支援設定寬高、上下邊距等特性（圖片 <img> 預設是行內元素 inline，
+        常透過此屬性清除預設對齊的空白間隙）。
+        w-100：代表 width: 100%;。它會將元素的寬度設為佔滿父容器的 100%。
+        -->
+    </div>
+    <div class="carousel-item">
+        <!--
+        代表單一的一張幻燈片（內容區塊）
+        每一個 .carousel-item 裡面可以放置圖片（<img>）、
+        文字（<h5>、<p>）或任何自訂的 HTML 標籤。
+        -->
+      <img src="https://placehold.co/1200x300" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://placehold.co/1200x300" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <!--
+      carousel-control-prev
+      將這個按鈕變成「左側/上一張」的輪播控制按鈕，並自動調整其定位與外觀。
+      data-bs-target="#carouselExample"
+      JavaScript 屬性，用來指定這個按鈕要控制哪一個輪播容器（對應到頁面中 id="carouselExample" 的元素）。
+      data-bs-slide="prev"
+      JavaScript 屬性，告訴輪播元件當按鈕被點擊時，要切換到「上一張（previous）」投影片。
+      -->
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <!--
+      span：一個行內標籤，用來包覆並顯示圖示。
+      class="carousel-control-prev-icon"：Bootstrap 的內建樣式類別（Class），
+      會自動載入一個「向左（上一張）」的箭頭圖示背景。
+      aria-hidden="true"：無障礙網頁（Accessibility, a11y）屬性，
+      告訴螢幕閱讀器（給視障者使用的工具）忽略這個圖示，避免重複唸出或產生干擾。
+      -->
+    <span class="visually-hidden">Previous</span>
+      <!--
+      class="visually-hidden"
+      視覺隱藏：一般使用者在網頁畫面上看不見這個元素（就像設定了 display: none 或 visibility: hidden 一樣，但運作方式不同）。
+      無障礙支援：視障或盲人使用者透過螢幕閱讀器瀏覽網頁時，依然可以聽見並取得這個元素的文字內容。
+      -->
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <!--
+      data-bs-slide="next" 是 Bootstrap 輪播元件（Carousel）的自訂屬性，用來控制輪播圖切
+      作用：當使用者點擊帶有這個屬性的按鈕或連結時，Bootstrap 的 JavaScript 會自動把當前顯示的幻燈片（Slide）切換到下一張。
+      參數值：next 代表向後切換下一張；若改用 prev 則是向前切換上一張。
+      版本差異：
+      在 Bootstrap 4 中寫作 data-slide="next"，
+      到了 Bootstrap 5 則加入 -bs 命名空間變成 data-bs-slide="next"，避免與其他程式庫衝突。
+      -->
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+    <!-- 
+        <br> 可替換改用 bootstrap 微調
+        1. 使用 d-none d-md-inline 
+        2. 使用 d-block d-md-inline 處理外層標籤
+        3. 強制完全不換行：text-nowrap
+    -->
+    <div id class="container">
+        <div class="row">
+            <div class="card col-md mx-3 my-1">
+                <!--
+                🧱 基礎元件card功能：建立一個卡片元件。
+                    效果：會自動加上白色背景、圓角、灰色細邊框以及適度的內襯（Padding），
+                    常用來包裝獨立的內容區塊。
+                📐 網格佈局col-md功能：中等螢幕以上的彈性欄位。
+                    效果：在平板與桌機（螢幕寬度 ≥ 768px）環境下，
+                    該欄位會與其他同層級的 col 欄位平均分配可用寬度；
+                    在手機等小螢幕（< 768px）環境下，則會自動變成單行全寬（100%）呈現。
+                ↔️ 外邊距（Margin）mx-3功能：設定水平（左右）外邊距。
+                    效果：左右兩側加上 3 等級的間距（在 Bootstrap 預設中為 1rem，即 16px）。
+                    my-1功能：設定垂直（上下）外邊距。
+                    效果：上下兩側加上 1 等級的間距（在 Bootstrap 預設中為 0.25rem，即 4px）。
+                -->
+                <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <!--  
+                alt="..."替代文字屬性。當圖片載入失敗時，
+                網頁會顯示此文字。幫助視障人士的螢幕閱讀器理解圖片內容。
+                目前填寫 ... 代表正式開發時需要替換為實際的圖片描述。
+                -->
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <!--
+                    href="#"：超連結的目標網址。這裡的 # 是預留填空符號（錨點），
+                        代表目前點擊後不會跳轉到其他頁面，通常在開發初期或寫範例時使用。
+                    btn：Bootstrap 的基礎按鈕樣式，負責提供按鈕的內距（padding）、
+                        圓角、字體大小以及滑鼠懸停（hover）時的基礎動畫效果。
+                    btn-primary：Bootstrap 的顏色主題類別，
+                        負責將按鈕填滿主要控制顏色（在預設的 Bootstrap 樣式中是藍色）。
+                    -->
+                </div>
+            </div>
+            <div class="card col-md mx-3 my-1">
+                <!--
+                1. row（行）意思：代表 Bootstrap 網格系統（Grid System）中的「行」（Row）。
+                    功能：它使用 Flexbox 彈性盒模型來佈局。
+                    用來包住內部的欄位（col），確保裡面的內容能自動排成一列，並修正左右兩側的外邊距。
+                2. mt-3（上方外邊距）意思：代表頂部外邊距（Margin-Top）大小為級別 3。
+                    拆解：m：代表 margin（外邊距）。t：代表 top（上方）。
+                    3：代表距離的大小（Bootstrap 預設 3 通常等於 1rem，大約是 16 像素）
+                    ，用來跟上面的元素保持一些距離。
+                -->
+                <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card col-md mx-3 my-1">
+                <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="card col-md-6 col-lg">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card col-md-6 col-lg">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card col-md-6 col-lg">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card col-md-6 col-lg">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+
+    </div> 
+
+    <a href="index.htm">回首頁</a>
+</body>
+</html>
