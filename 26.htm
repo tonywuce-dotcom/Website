@@ -111,7 +111,7 @@
       // 暫存按鈕原始內容
       const originalContent = btnSubmit.innerHTML;
 
-      // 進入 loading 狀態：禁用按鈕並插入 Bootstrap spinner
+      // 進入 loading 狀態：禁用按鈕並插入 Bootstrap spinner (旋轉圖型指標器),參考 Bootstrap->Components->
       btnSubmit.disabled = true;
       btnSubmit.innerHTML = `
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
