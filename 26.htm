@@ -14,21 +14,72 @@
 </head>
 <body>
 <div class="container py-3">
-    <h2>HTML</h2>
+    <h2>HTML_表單元件</h2>
 <div class="mb-3">
   <span>Email address (without label)</span>
+    <!--
+    標籤    預設排版行為 (Display)                                  語意用途                                     視覺效果
+    <span>  行內元素 (Inline)文字會跟前後內容接在同一行(不換行)。     沒有特定語意，單純用來包裹文字以便設定樣式。     無特殊效果。
+    -->
   <input type="email" placeholder="name@example.com">
+    <!--
+    type="email"：將輸入欄位指定為「電子郵件」類型，
+         會在行動裝置上跳出包含 @ 符號的專屬鍵盤，
+         並在表單提交時自動驗證格式是否為有效的 Email。
+    placeholder：在欄位沒有輸入內容時顯示「灰色提示文字」，
+        告訴使用者這裡該填寫什麼，當使用者開始打字時提示就會消失。
+        [1] (https://steam.oxxostudio.tw/category/html/tags/input.html),
+        [2] (https://www.exception.site/article/5472),
+        [3] (https://www.runoob.com/jsref/prop-email-placeholder.html)詳細說明與範例
+            1. 程式碼範例html
+                <input type="email" placeholder="name@example.com">請謹慎使用程式碼。
+            2. 各屬性功能拆解
+                type="email" 的特點：
+                    格式驗證：當使用者送出表單（<form>）時，瀏覽器會自動檢查內容是否包含 @ 以
+                    及完整的網域格式。若格式錯誤，會跳出提示阻擋送出。
+                    便利鍵盤：在手機或平板等觸控裝置點擊此欄位時，
+                    螢幕虛擬鍵盤會自動切換成適合輸入信箱的佈局（優先顯示 @ 與 . 等常用鍵盤符號）。
+                placeholder 的特點：
+                    視覺提示：用來顯示預期資料的範例或簡短說明（如 請輸入您的電子郵件 或 name@example.com）。
+                    互動行為：當欄位為空白且未被點選時會顯示；一旦使用者點擊輸入或填入文字，提示文字就會自動隱藏。
+                        [1] (https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/email), 
+                        [2] (https://a11yvillage.coseeing.org/articles/104),
+                        [3] (https://www.runoob.com/jsref/prop-email-placeholder.html)
+        注意事項
+            placeholder 不能取代 <label>（標籤）。無障礙網頁（Accessibility）與螢幕閱讀器主
+            要依賴 <label> 來識別欄位，因此建議兩者搭配使用最佳。 
+                [1] (https://a11yvillage.coseeing.org/articles/104), 
+                [2] (https://mdn.club.tw/en-US/docs/Web/HTML/Element/input/email)STEAM學習網輸入
+                - HTML 教學 - STEAM 教育學習網最多可輸入的字元數。 placeholder, 沒有輸入內容時要顯示的文字。 
+                pattern, 搭配正規表達式驗證輸入的內容是否符合格式。 
+                multiple, email 類型專用，使用後可以輸入多筆 ...A11y 
+                新手村無障礙網頁開發：表單基礎概念與實作，以React 為例2026年5月21日 
+                — ... placeholder="輸入您的帳號" /> 電子郵件： .顯示全部    
+    -->
 </div>
 <div class="mb-3">
   <label for="email01" >Email address (with label)</label>
   <input type="email" id="email01" placeholder="name@example.com">
+    <!--
+    label 加 for 和 input id 名稱一樣 
+    使label 和 input綁定為同一元件
+    -->
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" >Example textarea</label>
   <textarea id="exampleFormControlTextarea1" rows="3"></textarea>
+    <!--
+    textarea用法和input相同 ,只差別在 單行,多行的不同
+    css
+    textarea 
+    {
+      resize: none; /* 禁用滑鼠拖拽大小，讓寬高完全由你說了算！ */
+    }
+    rows="3"為三行高度
+    -->
 </div>
 
-    <h2>Bootstrap</h2>
+    <h2>Bootstrap_表單(Form)設計元件</h2>
 <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Email address</label>
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -37,9 +88,13 @@
       <div id="passwordHelpBlock" class="form-text">
       Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
     </div>
+    <!--
+    參考範例 Form controls -> Form text
+    -->
 </div>
 
 <script>
+    // 按鈕 判斷,可依照需要的功能請Ai產生程式碼
   (() => {
     const btnSubmit = document.getElementById('btnSubmit');
 
@@ -75,7 +130,9 @@
 </script>
 
 <button type="button" class="btn btn-primary mb-3" id="btnSubmit">submit</button>
-
+<!--
+html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同才能套用script內程式指令
+-->
 <div class="mb-3">
   <label for="textarea01" class="form-label">Example textarea</label>
   <textarea class="form-control" id="textarea01" rows="3"></textarea>
