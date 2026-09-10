@@ -190,9 +190,18 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
 <button type="button" class="btn btn-primary mb-3" id="btnAddUser">Add User</button>
 
 <div id="userContainer" class="d-flex flex-column gap-2">
+    <!--
+    動態資料要插入的容器容器
+    效果 平時隱藏(不可視),按下Add User 
+                顯示新增 Email 和 Password 欄位 和 Delete 按鈕
+    -->
     <div class="row g-2 align-items-center user-row">
         <div class="col-auto">
           <label class="visually-hidden">Email</label>
+            <!--
+            參考 bootstrap->Helpers->Visually hidden (隱藏)
+                 bootstrap->Layout->Horizontal form (表單)
+            -->
           <input type="text" readonly class="form-control-plaintext" value="email@example.com">
         </div>
     <div class="col-auto">
@@ -206,6 +215,11 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
 </div>
 
 <template id="userRowTemplate">
+    <!--
+    定義模板：網頁畫面上看不到這段
+    HTML
+    <template>：告訴瀏覽器這是一段網頁模板，先隱藏起來不要執行
+    -->
     <div class="row g-2 align-items-center user-row">
         <div class="col-auto">
           <label class="visually-hidden">Email</label>
@@ -222,15 +236,24 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
 </template>
 
 <script>
+    //Add User 按鈕 判斷
   (() => {
     const btnAddUser = document.getElementById('btnAddUser');
     const userContainer = document.getElementById('userContainer');
     const userRowTemplate = document.getElementById('userRowTemplate');
 
+    //「檢查畫面上的按鈕、容器和模板是否存在。
+    //只要其中任何一個找不到，後續的程式碼就完全不要執行，直接提早結束（return）。
+    //邏輯 如果（找不到 btnAddUser）或者（找不到 userContainer）或者（找不到 userRowTemplate），那就直接結束，什麼都別做。
+    //原因
+    //網頁上沒有這些元素：(先確定網頁上有這些元件,沒有就不執行,這是一行防呆判斷)
+    //某個頁面不需要這個功能，所以 HTML 沒寫這些 ID（但共用了同一支 JS 檔案）。
+    //HTML 裡的 ID 不小心打錯字（例如拼成 userContanier）。
+    //網頁元件還沒載入完成，JS 就先執行了。此時，這些變數的值就會是 null。
     if (!btnAddUser || !userContainer || !userRowTemplate) {
       return;
     }
-
+    
     // 1. 新增一筆資料列
     const handleAddUser = () => {
       const templateContent = userRowTemplate.content.cloneNode(true);
