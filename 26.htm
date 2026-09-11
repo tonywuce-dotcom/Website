@@ -98,6 +98,7 @@
   (() => {
     const btnSubmit = document.getElementById('btnSubmit');
 
+      // 防呆 btnSubmit 網頁元件未產生,不執行跳出script
     if (!btnSubmit) {
       return;
     }
@@ -142,10 +143,13 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
 <script>
   (() => {
     const MAX_LIMIT = 200;
+      // const常數 用於設定預設值
     const textareaElement = document.getElementById('textarea01');
+      // 讀取網頁字元輸入元件id textarea01 內字數
     const counterElement = document.getElementById('charCounter');
-
+    // 讀取網頁div元件 內字數id 內字數
     if (!textareaElement || !counterElement) {
+        // textareaElement,counterElement 空值(網路元件為產生時)
       return;
     }
 
@@ -257,7 +261,9 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
     // 1. 新增一筆資料列
     const handleAddUser = () => {
       const templateContent = userRowTemplate.content.cloneNode(true);
+        //dom語法複製一份userRowTemplate範例 放入 java 容器 templateContent
       userContainer.appendChild(templateContent);
+        // 將templateContent(範例)插入到userContainer最後並顯示(完成新增的動作)
     };
 
     // 2. 透過事件委派處理刪除
