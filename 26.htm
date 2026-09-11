@@ -57,6 +57,7 @@
                 — ... placeholder="輸入您的帳號" /> 電子郵件： .顯示全部    
     -->
 </div>
+<hr>
 <div class="mb-3">
   <label for="email01" >Email address (with label)</label>
   <input type="email" id="email01" placeholder="name@example.com">
@@ -65,6 +66,7 @@
     使label 和 input綁定為同一元件
     -->
 </div>
+<hr>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" >Example textarea</label>
   <textarea id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -78,8 +80,7 @@
     rows="3"為三行高度
     -->
 </div>
-    <hr>
-
+<hr>
     <h2>Bootstrap_表單(Form)設計元件</h2>
 <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -132,6 +133,7 @@
 </script>
 
 <button type="button" class="btn btn-primary mb-3" id="btnSubmit">submit</button>
+<hr>
 <!--
 html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同才能套用script內程式指令
 -->
@@ -189,7 +191,6 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
         </div>        
     </div>
 </div>
-
 <hr>
 <button type="button" class="btn btn-primary mb-3" id="btnAddUser">Add User</button>
 
@@ -235,6 +236,10 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
         </div>
     <div class="col-auto">
       <button type="button" class="btn btn-danger btn-delete">Delete</button>
+        <!--class 內
+        btn btn-danger 為定義外觀設定
+        btn-delete 為給程式辨認使用
+        -->
     </div>
   </div>
 </template>
@@ -269,6 +274,9 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
     // 2. 透過事件委派處理刪除
     const handleDeleteUser = (event) => {
       const deleteButton = event.target.closest('.btn-delete');
+        // event.target.closest('.btn-delete')
+        // 將dom內的 css的class 向上尋找.btn-delete 的class
+        // 並由 event偵測到DOM元件目標並放入deleteButton容器內
       if (!deleteButton) {
         return;
       }
@@ -276,12 +284,16 @@ html 產生 送出按鈕 submit ,id為 btnSubmit 需與 script內取得 id相同
       const targetRow = deleteButton.closest('.user-row');
       if (targetRow) {
         targetRow.remove();
+          // 若發現targetRow 內有值(放入DOM元件),就清空
       }
     };
 
     btnAddUser.addEventListener('click', handleAddUser);
+      // 監聽 btnAddUser 按鈕是否有被點擊（click），
+      // 一旦被點擊了，就立刻去執行 handleAddUser 函式裡面的程式碼。
     userContainer.addEventListener('click', handleDeleteUser);
   })();
+    
 </script>
 
 <hr>
